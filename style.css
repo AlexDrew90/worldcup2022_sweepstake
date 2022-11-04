@@ -1,0 +1,67 @@
+@media (max-width: 6000px) {
+  /* For a screen < 960px, this CSS will be read */
+  .countries {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 720px) {
+  /* For a screen < 720px, this CSS will be read */
+  .countries {
+    font-size: 0.5em;
+  }
+  .countries li img{
+    height: 23px;
+    width: auto;
+    max-width: 38px;
+  }
+}
+
+@media (max-width: 540px) {
+  /* For a screen < 540px, this CSS will be read */
+
+  .countries li img{
+    height: 15px;
+    width: auto;
+    max-width: 25px;
+    padding-bottom: 2px;
+  }
+  .countries li p{
+    display: none;
+  }
+}
+
+body {
+  background-color: rgb(253, 234, 220);
+  font-family: 'Inconsolata', monospace;
+}
+
+.country-wrapper{
+  display: flex;
+  justify-content: space-between;
+}
+
+.header{
+  font-size: 2em;
+  text-align: center;
+}
+
+.countries{
+  list-style: none;
+  width: 25%;
+}
+
+/* .countries li{
+  display: table
+} */
+
+.countries li p{
+  padding-bottom: 0;
+  padding-top: 6px;
+  margin: 0 auto;
+}
+
+.countries li img{
+  border-radius: 100px;
+  margin: 0 auto;
+}
