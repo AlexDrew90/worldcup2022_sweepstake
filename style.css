@@ -107,6 +107,19 @@ body {
   text-decoration: none;
 }
 
+.add-names{
+  display: flex;
+  justify-content: center;
+}
+
+.add-names li{
+border: solid black 1px;
+padding: 5px;
+color: rgb(250, 242, 242);
+background-color: rgb(42, 126, 126);
+font-weight: bold;
+}
+
 .country-wrapper{
   display: flex;
   justify-content: space-between;
