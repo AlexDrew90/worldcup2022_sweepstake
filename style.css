@@ -5,7 +5,7 @@
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   /* For a screen < 720px, this CSS will be read */
   .countries {
     font-size: 0.5em;
@@ -17,7 +17,7 @@
   }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 480px) {
   /* For a screen < 540px, this CSS will be read */
 
   .countries li img{
@@ -34,6 +34,77 @@
 body {
   background-color: rgb(253, 234, 220);
   font-family: 'Inconsolata', monospace;
+  color: rgb(12, 12, 12);
+}
+
+.header{
+  font-size: 2em;
+  text-align: center;
+  margin: 30px;
+}
+
+.name-collection{
+  display: flex;
+  justify-content: center;
+  margin: 25px;
+}
+
+.name-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.name-form label{
+  margin: 10px;
+}
+
+.form-name{
+  margin: 10px;
+  padding: 10px;
+}
+
+.add-button{
+  padding: 10px 30px;
+  background-color: rgb(12, 12, 12);
+  color: rgb(250, 242, 242);
+  border: 2px solid rgb(12, 12, 12);
+  box-shadow: none;
+}
+
+.add-button:hover{
+  padding: 10px 30px;
+  background-color: rgb(250, 242, 242);
+  color: rgb(12, 12, 12);
+  border: 2px solid rgb(12, 12, 12);
+}
+
+.clear-button{
+  margin-left: 20px;
+}
+
+.middle{
+  display: flex;
+  justify-content: center;
+}
+
+.primary-cta{
+  padding: 10px 30px;
+  margin: 40px;
+  background-color: rgb(38, 203, 29);
+  color: rgb(250, 242, 242);
+  border: 2px solid rgb(38, 203, 29);
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.5em;
+}
+
+.primary-cta:hover{
+  background-color: rgb(91, 250, 83);
+  color: rgb(250, 242, 242);
+  border: 2px solid rgb(91, 250, 83);
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .country-wrapper{
@@ -41,19 +112,20 @@ body {
   justify-content: space-between;
 }
 
-.header{
-  font-size: 2em;
-  text-align: center;
-}
-
 .countries{
   list-style: none;
   width: 25%;
+  padding: 0;
 }
 
-/* .countries li{
-  display: table
-} */
+.countries li{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 
 .countries li p{
   padding-bottom: 0;

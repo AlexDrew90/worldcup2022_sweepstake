@@ -17,13 +17,20 @@
 <body>
 
   <h1 class="header">Welcome to the World Cup 2022 sweepstake generator!</h1>
-  <div class="name_collection">
-    <form action="/action_page.php">
+  <div class="name-collection">
+    <form class ="name-form">
       <label for="fname">Add someone to the sweepstake:</label><br>
-      <input type="text" id="name" name="name" value="John"><br>
-      <input type="submit" value="Submit">
+      <input type="text" class="form-name" name="name" value=""><br>
+      <input type="submit" class="add-button" value="Add">
+      <a href="#" class="clear-button">Clear</a>
     </form>
-
+  </div>
+  <div>
+  <div class="name-display">
+    <ul class="add-names"></ul>
+  </div>
+  <div class="middle">
+    <a class="primary-cta" href="#">Select teams!</a>
   </div>
   <div class="country-wrapper">
     <ul class ="countries col-1">
