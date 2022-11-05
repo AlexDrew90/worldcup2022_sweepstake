@@ -28,6 +28,9 @@ clearButton.addEventListener ("click", (event) => {
 submitButton.addEventListener ("click", (event) => {
   if (outputList.childElementCount > 1){
     countriesArray.forEach((event) => {
+    const listItems = document.querySelector(".list-inline-item");
+    listItems.classList.remove('list-inline-item');
+    listItems.classList.add('new-look');
     const randCountry = countriesArray[Math.floor(Math.random()*countriesArray.length)];
 
     })

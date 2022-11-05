@@ -112,7 +112,7 @@ body {
   justify-content: center;
 }
 
-.add-names li{
+.list-inline-item{
 border: solid black 1px;
 padding: 5px;
 color: rgb(250, 242, 242);
@@ -149,4 +149,12 @@ font-weight: bold;
 .countries li img{
   border-radius: 100px;
   margin: 0 auto;
+}
+
+.new-look{
+border: solid black 1px;
+padding: 10px;
+color: rgb(12, 12, 12);
+background-color: rgb(250, 242, 242);
+font-weight: bold;
 }
