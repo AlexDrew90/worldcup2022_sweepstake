@@ -3,6 +3,11 @@
   .countries {
     font-size: 1em;
   }
+  .countries li img{
+    height: 30px;
+    width: auto;
+    max-width: 45px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -41,6 +46,10 @@ body {
   font-size: 2em;
   text-align: center;
   margin: 30px;
+}
+
+.Intro{
+  text-align: center;
 }
 
 .name-collection{
@@ -162,4 +171,9 @@ color: rgb(12, 12, 12);
 background-color: rgb(250, 242, 242);
 font-weight: bold;
 list-style: none;
+}
+
+.highlight{
+  background-color: rgb(243, 243, 2);
+  transition-duration: 1s;
 }
