@@ -18,11 +18,20 @@
 <body>
 
   <h1 class="header">Welcome to the World Cup 2022 sweepstake generator!</h1>
-  <p class="Intro">Use this tool to randomly assign teams to you and your friends. If the number of participants is not divisible by 32, the program will randomly select a new starting point to add teams (once all other teams have been allocated.)</p>
+  <p class="Intro">Use this tool to randomly assign teams to you and your friends. If the teams cannot be split evenly across the number of players you have selected, the program will randomly allocate the remaining teams.</p>
+
+  <!-- <div class="toggle">
+    <label for="toggle">Turn this on to distribute the top ranked teams first:</label>
+    <label class="switch">
+      <input type="checkbox" class="checkbox">
+      <span class="slider round"></span>
+    </label>
+  </div> -->
+
   <div class="name-collection">
     <form class ="name-form">
-      <label for="fname">Add someone to the sweepstake:</label><br>
-      <input type="text" class="form-name" name="name" value=""><br>
+      <label for="fname">Add someone to the sweepstake:</label>
+      <input type="text" class="form-name" name="name" value="">
       <input type="submit" class="add-button" value="Add">
       <a href="#" class="clear-button">Clear</a>
     </form>
