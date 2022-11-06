@@ -35,16 +35,18 @@ submitButton.addEventListener ("click", (event) => {
         listItems[i].classList.add('new-look');
       }
     const times = 32;
+    let count = 0;
     for(let i = 0; i < times; i++) {
     const randCountryIndex = (Math.floor(Math.random()*countriesArray.length));
     const randCountry = countriesArray[randCountryIndex];
     countriesArray.splice(randCountryIndex, 1);
-    return randCountry
+    let insertedCountry = `<p>${randCountry}</p>`;
+    listItems[count].insertAdjacentHTML("beforeend", insertedCountry);
+    if (count < listItems.length - 1){
+      count +=1
+    }else{
+      count = 0;
     }
-    for (let i = 0; i < listItems.length; i++){
-      let insertedCountry = `<p>${randCountry}</p>`;
-      console.log(listItems[i]);
-      listItems[i].insertAdjacentHTML("beforeend", insertedCountry);
     }
   }else {
     alert("You need at least two players!");
