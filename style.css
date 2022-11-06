@@ -120,6 +120,10 @@ background-color: rgb(42, 126, 126);
 font-weight: bold;
 }
 
+.list-inline-item p{
+  margin-bottom: 0;
+  }
+
 .country-wrapper{
   display: flex;
   justify-content: space-between;
@@ -157,4 +161,5 @@ padding: 10px;
 color: rgb(12, 12, 12);
 background-color: rgb(250, 242, 242);
 font-weight: bold;
+list-style: none;
 }

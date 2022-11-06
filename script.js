@@ -8,13 +8,15 @@ let namesArray = [];
 
 addButton.addEventListener ("click", (event) => {
   event.preventDefault()
-if (outputList.childElementCount < 32){
-const addedPerson = nameField.value;
+  const addedPerson = nameField.value;
+if (outputList.childElementCount < 32 && addedPerson != ""){
 namesArray.push(addedPerson);
-const inputtedLi = `<li class="list-inline-item">${addedPerson}</li>`;
+const inputtedLi = `<li class="list-inline-item"><p>${addedPerson}</p></li>`;
 outputList.insertAdjacentHTML("beforeend", inputtedLi);
 nameField.value ="";
-} else {
+} else if (addedPerson === ""){
+  alert("Please write a name before pressing the 'add' button.");
+}else{
   alert("32 is the maximum. No more teams left!");
   nameField.value ="";
 }
@@ -27,13 +29,23 @@ clearButton.addEventListener ("click", (event) => {
 
 submitButton.addEventListener ("click", (event) => {
   if (outputList.childElementCount > 1){
-    countriesArray.forEach((event) => {
-    const listItems = document.querySelector(".list-inline-item");
-    listItems.classList.remove('list-inline-item');
-    listItems.classList.add('new-look');
-    const randCountry = countriesArray[Math.floor(Math.random()*countriesArray.length)];
-
-    })
+      const listItems = document.querySelectorAll(".list-inline-item");
+      for (let i = 0; i < listItems.length; i++){
+        listItems[i].classList.remove('list-inline-item');
+        listItems[i].classList.add('new-look');
+      }
+    const times = 32;
+    for(let i = 0; i < times; i++) {
+    const randCountryIndex = (Math.floor(Math.random()*countriesArray.length));
+    const randCountry = countriesArray[randCountryIndex];
+    countriesArray.splice(randCountryIndex, 1);
+    return randCountry
+    }
+    for (let i = 0; i < listItems.length; i++){
+      let insertedCountry = `<p>${randCountry}</p>`;
+      console.log(listItems[i]);
+      listItems[i].insertAdjacentHTML("beforeend", insertedCountry);
+    }
   }else {
     alert("You need at least two players!");
   }
