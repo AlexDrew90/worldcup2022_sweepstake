@@ -3,12 +3,17 @@
   .countries {
     font-size: 1em;
   }
+  .countries li img{
+    height: 30px;
+    width: auto;
+    max-width: 45px;
+  }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
   /* For a screen < 720px, this CSS will be read */
   .countries {
-    font-size: 0.5em;
+    font-size: 0.75em;
   }
   .countries li img{
     height: 23px;
@@ -17,7 +22,7 @@
   }
 }
 
-@media (max-width: 540px) {
+@media (max-width: 480px) {
   /* For a screen < 540px, this CSS will be read */
 
   .countries li img{
@@ -34,26 +39,127 @@
 body {
   background-color: rgb(253, 234, 220);
   font-family: 'Inconsolata', monospace;
+  color: rgb(12, 12, 12);
 }
+
+.header{
+  font-size: 2em;
+  text-align: center;
+  margin: 30px;
+}
+
+.Intro{
+  text-align: center;
+  margin: 10px;
+}
+
+.toggle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 25px;
+}
+
+.name-collection{
+  display: flex;
+  justify-content: center;
+  margin: 25px;
+}
+
+.name-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.name-form label{
+  margin: 10px;
+}
+
+.form-name{
+  margin: 10px;
+  padding: 10px;
+}
+
+.add-button{
+  padding: 10px 30px;
+  background-color: rgb(12, 12, 12);
+  color: rgb(250, 242, 242);
+  border: 2px solid rgb(12, 12, 12);
+  box-shadow: none;
+}
+
+.add-button:hover{
+  padding: 10px 30px;
+  background-color: rgb(250, 242, 242);
+  color: rgb(12, 12, 12);
+  border: 2px solid rgb(12, 12, 12);
+}
+
+.clear-button{
+  margin-left: 20px;
+}
+
+.middle{
+  display: flex;
+  justify-content: center;
+}
+
+.primary-cta{
+  padding: 10px 30px;
+  margin: 40px;
+  background-color: rgb(38, 203, 29);
+  color: rgb(250, 242, 242);
+  border: 2px solid rgb(38, 203, 29);
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1.5em;
+}
+
+.primary-cta:hover{
+  background-color: rgb(91, 250, 83);
+  color: rgb(250, 242, 242);
+  border: 2px solid rgb(91, 250, 83);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.add-names{
+  display: flex;
+  justify-content: center;
+}
+
+.list-inline-item{
+border: solid black 1px;
+padding: 5px;
+color: rgb(250, 242, 242);
+background-color: rgb(42, 126, 126);
+font-weight: bold;
+}
+
+.list-inline-item p{
+  margin-bottom: 0;
+  }
 
 .country-wrapper{
   display: flex;
   justify-content: space-between;
 }
 
-.header{
-  font-size: 2em;
-  text-align: center;
-}
-
 .countries{
   list-style: none;
   width: 25%;
+  padding: 0;
 }
 
-/* .countries li{
-  display: table
-} */
+.countries li{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
 
 .countries li p{
   padding-bottom: 0;
@@ -64,4 +170,88 @@ body {
 .countries li img{
   border-radius: 100px;
   margin: 0 auto;
+}
+
+.new-look{
+border: solid black 1px;
+padding: 10px;
+color: rgb(12, 12, 12);
+background-color: rgb(250, 242, 242);
+font-weight: bold;
+list-style: none;
+}
+
+.name-header{
+  color: rgb(250, 242, 242);
+  text-align: center;
+  background-color: rgb(42, 126, 126);
+}
+
+.highlight{
+  background-color: rgb(243, 243, 2);
+  transition-duration: 1s;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: rgb(38, 203, 29);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px rgb(38, 203, 29);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
