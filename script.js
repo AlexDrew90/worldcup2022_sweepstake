@@ -6,8 +6,11 @@ const outputList = document.querySelector(".add-names");
 const toggleListen = document.querySelector(".checkbox");
 let countriesArray = ["Argentina", "Australia", "Belgium", "Brazil", "Cameroon", "Canada", "Costa Rica", "Croatia", "Denmark", "Ecuador", "England", "France", "Germany", "Ghana", "Iran", "Japan", "Mexico", "Morocco", "Netherlands", "Poland", "Portugal", "Qatar", "Saudi Arabia", "Senegal", "Serbia", "South Korea", "Spain", "Switzerland", "Tunisia", "United States", "Uruguay", "Wales"];
 let seedOneCountriesArray = ["Argentina", "Belgium", "Brazil", "Croatia", "Denmark", "England", "France", "Germany", "Mexico", "Netherlands", "Portugal", "Senegal", "Serbia", "Spain", "Switzerland", "Uruguay"];
-let seedTwocountriesArray = ["Australia", "Cameroon", "Canada", "Costa Rica", "Ecuador", "Ghana", "Iran", "Japan", "Morocco", "Poland", "Qatar", "Saudi Arabia", "South Korea", "Tunisia", "United States", "Wales"];
+let seedTwoCountriesArray = ["Australia", "Cameroon", "Canada", "Costa Rica", "Ecuador", "Ghana", "Iran", "Japan", "Morocco", "Poland", "Qatar", "Saudi Arabia", "South Korea", "Tunisia", "United States", "Wales"];
 let namesArray = [];
+let count = 0;
+let carryOverArray = [];
+// let remainder = 0;
 
 addButton.addEventListener ("click", (event) => {
   event.preventDefault()
@@ -29,86 +32,147 @@ return namesArray
 clearButton.addEventListener ("click", (event) => {
   outputList.innerHTML="";
   namesArray = [];
+  carryOverArray = [];
   countriesArray = ["Argentina", "Australia", "Belgium", "Brazil", "Cameroon", "Canada", "Costa Rica", "Croatia", "Denmark", "Ecuador", "England", "France", "Germany", "Ghana", "Iran", "Japan", "Mexico", "Morocco", "Netherlands", "Poland", "Portugal", "Qatar", "Saudi Arabia", "Senegal", "Serbia", "South Korea", "Spain", "Switzerland", "Tunisia", "United States", "Uruguay", "Wales"];
+  seedOneCountriesArray = ["Argentina", "Belgium", "Brazil", "Croatia", "Denmark", "England", "France", "Germany", "Mexico", "Netherlands", "Portugal", "Senegal", "Serbia", "Spain", "Switzerland", "Uruguay"];
+  seedTwoCountriesArray = ["Australia", "Cameroon", "Canada", "Costa Rica", "Ecuador", "Ghana", "Iran", "Japan", "Morocco", "Poland", "Qatar", "Saudi Arabia", "South Korea", "Tunisia", "United States", "Wales"];
   const clearHighlight = document.querySelectorAll(".highlight");
   for (let i = 0; i < clearHighlight.length; i++){
     clearHighlight[i].classList.remove("highlight");
   }
   });
 
+const changeListColor = (columnNum) => {
+  const listItems = document.querySelectorAll(".list-inline-item");
+  listItems[columnNum].classList.remove('list-inline-item');
+  listItems[columnNum].classList.add('new-look');
+}
 
-    submitButton.addEventListener ("click", (event) => {
-      if (outputList.childElementCount > 1){
-          const listItems = document.querySelectorAll(".list-inline-item");
+const addCountries = () => {
+            const randCountryIndex = (Math.floor(Math.random()*countriesArray.length));
+            const listItems = document.querySelectorAll(".list-inline-item");
+            const randCountry = countriesArray[randCountryIndex];
+            let insertedCountry = `<p>${randCountry}</p>`;
+            let sadFace = `<p>${"&#128532"}</p>`;
+            if(randCountry != undefined){
+            listItems[count -1].insertAdjacentHTML("beforeend", insertedCountry);
+            const randCountryNoSpace = randCountry.replace(/ /g,'');
+            const selectFlag = document.getElementById(randCountryNoSpace);
+            selectFlag.classList.add('highlight');}
+            else{listItems[count -1].insertAdjacentHTML("beforeend", sadFace);}
+            countriesArray.splice(randCountryIndex, 1);
+}
+
+const seededAddCountriesTwo = () => {
+  const randCountryIndex = (Math.floor(Math.random()*seedTwoCountriesArray.length));
+  const listItems = document.querySelectorAll(".list-inline-item");
+  const randCountry = seedTwoCountriesArray[randCountryIndex];
+  const remainder = 32 % namesArray.length;
+  const average = 32/namesArray.length;
+  const averageCeil = Math.ceil(average);
+  let insertedCountry = `<p>${randCountry}</p>`;
+  if(randCountry != undefined && listItems[count -1].childElementCount <= averageCeil){
+  listItems[count -1].insertAdjacentHTML("beforeend", insertedCountry);
+  const randCountryNoSpace = randCountry.replace(/ /g,'');
+  const selectFlag = document.getElementById(randCountryNoSpace);
+  selectFlag.classList.add('highlight');}
+  else{count =+ 1;}
+  seedTwoCountriesArray.splice(randCountryIndex, 1);
+}
+
+const seededAddCountriesOne = () => {
+  const randCountryIndex = (Math.floor(Math.random()*seedOneCountriesArray.length));
+  const listItems = document.querySelectorAll(".list-inline-item");
+  const randCountry = seedOneCountriesArray[randCountryIndex];
+  const remainder = 32 % namesArray.length;
+  let insertedCountry = `<p>${randCountry}</p>`;
+  if(seedOneCountriesArray.length != 0){
+  listItems[count -1].insertAdjacentHTML("beforeend", insertedCountry);
+  const randCountryNoSpace = randCountry.replace(/ /g,'');
+  const selectFlag = document.getElementById(randCountryNoSpace);
+  selectFlag.classList.add('highlight');}
+  if(seedOneCountriesArray.length === 0){carryOverArray.push(count);}
+  seedOneCountriesArray.splice(randCountryIndex, 1);
+  return carryOverArray
+}
+
+const singleLoopThrough = () => {
+  // let iterations = Math.ceil(32/namesArray.length);
+  let countRand = 0
+  let countArray = Array.from({length: namesArray.length}, (_, i) => i + 1);
+      while(countArray.length != 0){
+      const randCountIndex = (Math.floor(Math.random()*countArray.length));
+      countRand = countArray[randCountIndex];
+      count = countRand;
+      countArray.splice(randCountIndex, 1);
+      addCountries();
+    }
+  return count;
+}
+
+const seededSingleLoopThroughTwo = () => {
+  // let iterations = Math.ceil(32/namesArray.length);
+  let countRand = 0
+  let countArray = Array.from({length: namesArray.length}, (_, i) => i + 1);
+  let difference = countArray.filter(x => !carryOverArray.includes(x));
+  if(difference.length != 0){
+    const randCountIndex = (Math.floor(Math.random()*difference.length));
+      countRand = difference[randCountIndex];
+      count = countRand;
+      difference.splice(randCountIndex, 1);
+  }
+      while(countArray.length != 0){
+      const randCountIndex = (Math.floor(Math.random()*countArray.length));
+      countRand = countArray[randCountIndex];
+      count = countRand;
+      countArray.splice(randCountIndex, 1);
+      seededAddCountriesTwo();
+    }
+  return count;
+}
+
+const seededSingleLoopThrough = () => {
+  // let iterations = Math.ceil(32/namesArray.length);
+  let countRand = 0
+  let countArray = Array.from({length: namesArray.length}, (_, i) => i + 1);
+      while(countArray.length != 0){
+      const randCountIndex = (Math.floor(Math.random()*countArray.length));
+      countRand = countArray[randCountIndex];
+      count = countRand;
+      countArray.splice(randCountIndex, 1);
+      seededAddCountriesOne();
+    }
+  return count;
+}
+
+const loopThrough = () => {
+  while(countriesArray.length != 0){
+    singleLoopThrough();
+  }
+}
+
+const seededLoopThrough = () => {
+  while(seedOneCountriesArray.length != 0){
+    seededSingleLoopThrough();
+  }
+  while(seedTwoCountriesArray.length != 0){
+    seededSingleLoopThroughTwo();
+  }
+}
+
+submitButton.addEventListener ("click", (event) => {
+  if (outputList.childElementCount > 1){
+    if(toggleListen.checked === true && outputList.childElementCount <= 10){
+      seededLoopThrough();
+    }else if(toggleListen.checked === true && outputList.childElementCount > 10){
+      alert("You can only distribute top seeded teams first with a maximum of 10 players.");
+    }else{loopThrough();}
+  }else {
+    alert("You need at least two players!");
+  }
+  const listItems = document.querySelectorAll(".list-inline-item");
           for (let i = 0; i < listItems.length; i++){
             listItems[i].classList.remove('list-inline-item');
             listItems[i].classList.add('new-look');
           }
-        const remainder = 32 % namesArray.length;
-        const times = 32;
-        let count = 0;
-        const averagePot = 32/namesArray.length;
-        console.log(namesArray.length);
-        console.log(averagePot);
-        let delayedFunction = (i) => {
-          setTimeout(function() {
-            const randCountryIndex = (Math.floor(Math.random()*countriesArray.length));
-            const randCountry = countriesArray[randCountryIndex];
-            countriesArray.splice(randCountryIndex, 1);
-            let insertedCountry = `<p>${randCountry}</p>`;
-            listItems[count].insertAdjacentHTML("beforeend", insertedCountry);
-           if(countriesArray.length <= remainder){
-            const newLook = document.querySelectorAll(".new-look");
-            const randomise = () => {const randNum = Math.floor(Math.random()*listItems.length);
-              console.log(newLook[randNum].childElementCount);
-              console.log(averagePot);
-              console.log(newLook[randNum]);
-              const columnLength = (newLook[randNum].childElementCount) - 1
-              if(columnLength < averagePot){count = randNum;}
-              else{randomise();}
-            ;}
-                randomise();
-            }else if(count < listItems.length - 1){
-              count +=1
-            }else{
-              count = 0;
-            }
-            const randCountryNoSpace = randCountry.replace(/ /g,'')
-            const selectFlag = document.getElementById(randCountryNoSpace);
-              selectFlag.classList.add('highlight');
-          }, 200 * i);
-        }
-        for(let i = 0; i < times; i++) {
-          delayedFunction(i);
-        }
-      }else {
-        alert("You need at least two players!");
-      }
-        });
-
-
-
-
-
-
-
-    // const newLook = document.querySelectorAll(".new-look");
-    // console.log(newLook);
-    // const fairCount = randomFair.childElementCount[randNum]
-    // take down number of child elements when all are equal
-
-
-              // const newLook = document.querySelectorAll(".new-look");
-          // console.log(newLook.length);
-          // const averageLength = newLook[0].childElementCount;
-          // const equalChildElements = newLook[0].childElementCount;
-          // const fairRandom = () => {
-          //   const randNum = Math.floor(Math.random()*listItems.length);
-          //   const isChild = newLook[randNum].childElementCount;
-          //     if(isChild === equalChildElements){
-          //       count = randNum;
-          //       console.log(count);
-          //       console.log(listItems[count]);
-          //     }else{ fairRandom();}
-          //   }
-          // fairRandom();
+    });

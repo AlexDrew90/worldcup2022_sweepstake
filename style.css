@@ -58,6 +58,7 @@ body {
   justify-content: center;
   align-items: center;
   margin: 25px;
+  flex-wrap: wrap;
 }
 
 .name-collection{
@@ -127,6 +128,7 @@ body {
 .add-names{
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .list-inline-item{
@@ -135,6 +137,7 @@ padding: 5px;
 color: rgb(250, 242, 242);
 background-color: rgb(42, 126, 126);
 font-weight: bold;
+margin-bottom: 5px;
 }
 
 .list-inline-item p{
@@ -174,11 +177,12 @@ font-weight: bold;
 
 .new-look{
 border: solid black 1px;
-padding: 10px;
+padding: 5px;
 color: rgb(12, 12, 12);
 background-color: rgb(250, 242, 242);
 font-weight: bold;
 list-style: none;
+margin-bottom: 5px;
 }
 
 .name-header{
