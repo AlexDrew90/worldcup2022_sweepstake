@@ -10,7 +10,7 @@ let seedTwoCountriesArray = ["Australia", "Cameroon", "Canada", "Costa Rica", "E
 let namesArray = [];
 let count = 0;
 let carryOverArray = [];
-// let remainder = 0;
+let pointlesssWait = () => {console.log("waiting");}
 
 addButton.addEventListener ("click", (event) => {
   event.preventDefault()
@@ -49,21 +49,22 @@ const changeListColor = (columnNum) => {
 }
 
 const addCountries = () => {
-            const randCountryIndex = (Math.floor(Math.random()*countriesArray.length));
-            const listItems = document.querySelectorAll(".list-inline-item");
-            const randCountry = countriesArray[randCountryIndex];
-            let insertedCountry = `<p>${randCountry}</p>`;
-            let sadFace = `<p>${"&#128532"}</p>`;
-            if(randCountry != undefined){
-            listItems[count -1].insertAdjacentHTML("beforeend", insertedCountry);
-            const randCountryNoSpace = randCountry.replace(/ /g,'');
-            const selectFlag = document.getElementById(randCountryNoSpace);
-            selectFlag.classList.add('highlight');}
-            else{listItems[count -1].insertAdjacentHTML("beforeend", sadFace);}
-            countriesArray.splice(randCountryIndex, 1);
+  const randCountryIndex = (Math.floor(Math.random()*countriesArray.length));
+  const listItems = document.querySelectorAll(".list-inline-item");
+  const randCountry = countriesArray[randCountryIndex];
+  let insertedCountry = `<p>${randCountry}</p>`;
+  let sadFace = `<p>${"&#128532"}</p>`;
+  if(randCountry != undefined){
+  listItems[count -1].insertAdjacentHTML("beforeend", insertedCountry);
+  const randCountryNoSpace = randCountry.replace(/ /g,'');
+  const selectFlag = document.getElementById(randCountryNoSpace);
+  selectFlag.classList.add('highlight');}
+  else{listItems[count -1].insertAdjacentHTML("beforeend", sadFace);}
+  countriesArray.splice(randCountryIndex, 1);
 }
 
-const seededAddCountriesTwo = () => {
+const seededAddCountriesTwo = (count) => {
+  console.log('------', count);
   const randCountryIndex = (Math.floor(Math.random()*seedTwoCountriesArray.length));
   const listItems = document.querySelectorAll(".list-inline-item");
   const randCountry = seedTwoCountriesArray[randCountryIndex];
@@ -71,12 +72,14 @@ const seededAddCountriesTwo = () => {
   const average = 32/namesArray.length;
   const averageCeil = Math.ceil(average);
   let insertedCountry = `<p>${randCountry}</p>`;
-  if(randCountry != undefined && listItems[count -1].childElementCount <= averageCeil){
+  let sadFace = `<p>${"&#128532"}</p>`;
+  console.log(randCountry);
+  if(randCountry != undefined){
   listItems[count -1].insertAdjacentHTML("beforeend", insertedCountry);
   const randCountryNoSpace = randCountry.replace(/ /g,'');
   const selectFlag = document.getElementById(randCountryNoSpace);
   selectFlag.classList.add('highlight');}
-  else{count =+ 1;}
+  else{listItems[count -1].insertAdjacentHTML("beforeend", sadFace);}
   seedTwoCountriesArray.splice(randCountryIndex, 1);
 }
 
@@ -84,7 +87,7 @@ const seededAddCountriesOne = () => {
   const randCountryIndex = (Math.floor(Math.random()*seedOneCountriesArray.length));
   const listItems = document.querySelectorAll(".list-inline-item");
   const randCountry = seedOneCountriesArray[randCountryIndex];
-  const remainder = 32 % namesArray.length;
+  // const remainder = 32 % namesArray.length;
   let insertedCountry = `<p>${randCountry}</p>`;
   if(seedOneCountriesArray.length != 0){
   listItems[count -1].insertAdjacentHTML("beforeend", insertedCountry);
@@ -97,7 +100,6 @@ const seededAddCountriesOne = () => {
 }
 
 const singleLoopThrough = () => {
-  // let iterations = Math.ceil(32/namesArray.length);
   let countRand = 0
   let countArray = Array.from({length: namesArray.length}, (_, i) => i + 1);
       while(countArray.length != 0){
@@ -110,29 +112,39 @@ const singleLoopThrough = () => {
   return count;
 }
 
-const seededSingleLoopThroughTwo = () => {
-  // let iterations = Math.ceil(32/namesArray.length);
+const seededSingleLoopThroughTwo = (difference, countArray) => {
   let countRand = 0
-  let countArray = Array.from({length: namesArray.length}, (_, i) => i + 1);
-  let difference = countArray.filter(x => !carryOverArray.includes(x));
+  // let difference = countArray.filter(x => !carryOverArray.includes(x));
+  console.log('count array', countArray);
+  console.log('while cond', difference);
   if(difference.length != 0){
-    const randCountIndex = (Math.floor(Math.random()*difference.length));
-      countRand = difference[randCountIndex];
+    const newRandCountIndex = (Math.floor(Math.random()*difference.length));
+      countRand = difference[newRandCountIndex];
+      console.log(countRand);
       count = countRand;
-      difference.splice(randCountIndex, 1);
+      console.log('before', difference);
+      difference.splice(newRandCountIndex, 1);
+      carryOverArray.splice("newRandCountIndex, 1");
+      console.log('after', difference);
+      // seededAddCountriesTwo();
+      console.log(count);
   }
-      while(countArray.length != 0){
+     else if(countArray.length != 0){
+      // const listItems = document.querySelectorAll(".list-inline-item");
+      // console.log(listItems);
       const randCountIndex = (Math.floor(Math.random()*countArray.length));
       countRand = countArray[randCountIndex];
       count = countRand;
       countArray.splice(randCountIndex, 1);
-      seededAddCountriesTwo();
+      console.log("hello");
+
+      // seededAddCountriesTwo();
     }
-  return count;
+    seededAddCountriesTwo(count);
+  // return count;
 }
 
 const seededSingleLoopThrough = () => {
-  // let iterations = Math.ceil(32/namesArray.length);
   let countRand = 0
   let countArray = Array.from({length: namesArray.length}, (_, i) => i + 1);
       while(countArray.length != 0){
@@ -155,8 +167,15 @@ const seededLoopThrough = () => {
   while(seedOneCountriesArray.length != 0){
     seededSingleLoopThrough();
   }
+  let countArray = Array.from({length: namesArray.length}, (_, i) => i + 1);
+  let difference = countArray.filter(x => carryOverArray.includes(x));
+  console.log(difference);
   while(seedTwoCountriesArray.length != 0){
-    seededSingleLoopThroughTwo();
+    if(countArray.length === 0){
+      countArray = Array.from({length: namesArray.length}, (_, i) => i + 1);
+      console.log('refill', countArray);
+    }
+    seededSingleLoopThroughTwo(difference, countArray);
   }
 }
 
