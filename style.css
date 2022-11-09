@@ -1,7 +1,7 @@
 @media (max-width: 6000px) {
   /* For a screen < 960px, this CSS will be read */
   .countries {
-    font-size: 1em;
+    font-size: 1rem;
   }
   .countries li img{
     height: 30px;
@@ -13,7 +13,7 @@
 @media (max-width: 768px) {
   /* For a screen < 720px, this CSS will be read */
   .countries {
-    font-size: 1em;
+    font-size: 1rem;
   }
   .countries li img{
     height: 23px;
@@ -24,6 +24,10 @@
 
 @media (max-width: 480px) {
   /* For a screen < 540px, this CSS will be read */
+
+  .countries {
+    font-size: 1rem;
+  }
 
   .countries li img{
     height: 15px;
@@ -43,7 +47,7 @@ body {
 }
 
 .header{
-  font-size: 2em;
+  font-size: 2rem;
   text-align: center;
   margin: 30px;
 }

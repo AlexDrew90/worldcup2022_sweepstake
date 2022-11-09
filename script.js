@@ -10,26 +10,8 @@ let seedTwoCountriesArray = ["Australia", "Cameroon", "Canada", "Costa Rica", "E
 let namesArray = [];
 let count = 0;
 let carryOverArray = [];
-let pointlesssWait = () => {console.log("waiting");}
 
-addButton.addEventListener ("click", (event) => {
-  event.preventDefault()
-  const addedPerson = nameField.value;
-if (outputList.childElementCount < 32 && addedPerson){
-namesArray.push(addedPerson);
-const inputtedLi = `<li class="list-inline-item"><p class="name-header">${addedPerson}</p></li>`;
-outputList.insertAdjacentHTML("beforeend", inputtedLi);
-nameField.value ="";
-} else if (addedPerson === ""){
-  alert("Please write a name before pressing the 'add' button.");
-}else{
-  alert("32 is the maximum. No more teams left!");
-  nameField.value ="";
-}
-return namesArray
-});
-
-clearButton.addEventListener ("click", (event) => {
+const clearPage = () =>{
   outputList.innerHTML="";
   namesArray = [];
   carryOverArray = [];
@@ -39,11 +21,33 @@ clearButton.addEventListener ("click", (event) => {
   const clearHighlight = document.querySelectorAll(".highlight");
   for (let i = 0; i < clearHighlight.length; i++){
     clearHighlight[i].classList.remove("highlight");
-  }
+  }}
+
+addButton.addEventListener ("click", (event) => {
+  event.preventDefault()
+  const addedPerson = nameField.value;
+if(countriesArray.length === 0 || seedTwoCountriesArray.length === 0){
+  alert("Clearing existing names...");
+  clearPage();
+}else{
+  if (outputList.childElementCount < 32 && addedPerson){
+  namesArray.push(addedPerson);
+  const inputtedLi = `<li class="list-inline-item"><p class="name-header">${addedPerson}</p></li>`;
+  outputList.insertAdjacentHTML("beforeend", inputtedLi);
+  nameField.value ="";
+  } else if (addedPerson === ""){
+    alert("Please write a name before pressing the 'add' button.");
+  }else{
+    alert("32 is the maximum. No more teams left!");
+    nameField.value ="";}}
+return namesArray
+});
+
+clearButton.addEventListener ("click", () => {
+  clearPage();
   });
 
 const addCountries = () => {
-  console.log("hello");
   const randCountryIndex = (Math.floor(Math.random()*countriesArray.length));
   const listItems = document.querySelectorAll(".list-inline-item");
   const randCountry = countriesArray[randCountryIndex];
@@ -55,17 +59,15 @@ const addCountries = () => {
   const selectFlag = document.getElementById(randCountryNoSpace);
   selectFlag.classList.add('highlight');}
   else{listItems[count -1].insertAdjacentHTML("beforeend", sadFace);}
-  countriesArray.splice(randCountryIndex, 1);
-}
+  countriesArray.splice(randCountryIndex, 1);}
 
 const seededAddCountriesTwo = (count) => {
-  console.log('------', count);
   const randCountryIndex = (Math.floor(Math.random()*seedTwoCountriesArray.length));
   const listItems = document.querySelectorAll(".list-inline-item");
   const randCountry = seedTwoCountriesArray[randCountryIndex];
-  const remainder = 32 % namesArray.length;
+  // const remainder = 32 % namesArray.length;
   const average = 32/namesArray.length;
-  const averageCeil = Math.ceil(average);
+  // const averageCeil = Math.ceil(average);
   let insertedCountry = `<p>${randCountry}</p>`;
   let sadFace = `<p>${"&#128532"}</p>`;
   console.log(randCountry);
@@ -82,7 +84,6 @@ const seededAddCountriesOne = () => {
   const randCountryIndex = (Math.floor(Math.random()*seedOneCountriesArray.length));
   const listItems = document.querySelectorAll(".list-inline-item");
   const randCountry = seedOneCountriesArray[randCountryIndex];
-  // const remainder = 32 % namesArray.length;
   let insertedCountry = `<p>${randCountry}</p>`;
   if(seedOneCountriesArray.length != 0){
   listItems[count -1].insertAdjacentHTML("beforeend", insertedCountry);
@@ -109,37 +110,23 @@ const singleLoopThrough = () => {
 
 const seededSingleLoopThroughTwo = (difference, countArray) => {
   let countRand = 0
-  // let difference = countArray.filter(x => !carryOverArray.includes(x));
-  console.log('count array', countArray);
-  console.log('while cond', difference);
   if(difference.length != 0){
     const newRandCountIndex = (Math.floor(Math.random()*difference.length));
       countRand = difference[newRandCountIndex];
-      console.log(countRand);
       count = countRand;
-      console.log('before', difference);
       difference.splice(newRandCountIndex, 1);
       carryOverArray.splice("newRandCountIndex, 1");
-      console.log('after', difference);
-      // seededAddCountriesTwo();
-      console.log(count);
   }
      else if(countArray.length != 0){
-      // const listItems = document.querySelectorAll(".list-inline-item");
-      // console.log(listItems);
       const randCountIndex = (Math.floor(Math.random()*countArray.length));
       countRand = countArray[randCountIndex];
       count = countRand;
       countArray.splice(randCountIndex, 1);
-      console.log("hello");
-
-      // seededAddCountriesTwo();
     }
     seededAddCountriesTwo(count);
-  // return count;
 }
 
-const seededSingleLoopThrough = () => {
+const seededSingleLoopThroughOne = () => {
   let countRand = 0
   let countArray = Array.from({length: namesArray.length}, (_, i) => i + 1);
       while(countArray.length != 0){
@@ -160,7 +147,7 @@ const loopThrough = () => {
 
 const seededLoopThrough = () => {
   while(seedOneCountriesArray.length != 0){
-    seededSingleLoopThrough();
+    seededSingleLoopThroughOne();
   }
   let countArray = Array.from({length: namesArray.length}, (_, i) => i + 1);
   let difference = countArray.filter(x => carryOverArray.includes(x));
@@ -174,12 +161,15 @@ const seededLoopThrough = () => {
   }
 }
 
-submitButton.addEventListener ("click", (event) => {
+submitButton.addEventListener ("click", () => {
+  addButton.disabled = true;
+  submitButton.disabled = true;
   if (outputList.childElementCount > 1){
     if(toggleListen.checked === true && outputList.childElementCount <= 16){
       seededLoopThrough();
     }else if(toggleListen.checked === true && outputList.childElementCount > 16){
       alert("You can only distribute top seeded teams first with a maximum of 16 players.");
+      clearPage();
     }else{loopThrough();}
   }else {
     alert("You need at least two players!");
@@ -189,4 +179,6 @@ submitButton.addEventListener ("click", (event) => {
             listItems[i].classList.remove('list-inline-item');
             listItems[i].classList.add('new-look');
           }
+  addButton.disabled = false;
+  submitButton.disabled = false;
     });
