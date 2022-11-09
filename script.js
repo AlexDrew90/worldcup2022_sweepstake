@@ -42,13 +42,8 @@ clearButton.addEventListener ("click", (event) => {
   }
   });
 
-const changeListColor = (columnNum) => {
-  const listItems = document.querySelectorAll(".list-inline-item");
-  listItems[columnNum].classList.remove('list-inline-item');
-  listItems[columnNum].classList.add('new-look');
-}
-
 const addCountries = () => {
+  console.log("hello");
   const randCountryIndex = (Math.floor(Math.random()*countriesArray.length));
   const listItems = document.querySelectorAll(".list-inline-item");
   const randCountry = countriesArray[randCountryIndex];
@@ -181,10 +176,10 @@ const seededLoopThrough = () => {
 
 submitButton.addEventListener ("click", (event) => {
   if (outputList.childElementCount > 1){
-    if(toggleListen.checked === true && outputList.childElementCount <= 10){
+    if(toggleListen.checked === true && outputList.childElementCount <= 16){
       seededLoopThrough();
-    }else if(toggleListen.checked === true && outputList.childElementCount > 10){
-      alert("You can only distribute top seeded teams first with a maximum of 10 players.");
+    }else if(toggleListen.checked === true && outputList.childElementCount > 16){
+      alert("You can only distribute top seeded teams first with a maximum of 16 players.");
     }else{loopThrough();}
   }else {
     alert("You need at least two players!");
