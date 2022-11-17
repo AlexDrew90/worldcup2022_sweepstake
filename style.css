@@ -225,29 +225,6 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-@media (max-width: 6000px) {
-  /* For a screen < 960px, this CSS will be read */
-  .countries {
-    font-size: 1rem;
-  }
-  .countries li img{
-    height: 30px;
-    width: auto;
-    max-width: 45px;
-  }
-}
-
-@media (max-width: 768px) {
-  /* For a screen < 720px, this CSS will be read */
-  .countries {
-    font-size: 1rem;
-  }
-  .countries li img{
-    height: 23px;
-    width: auto;
-    max-width: 38px;
-  }
-}
 
 @media (max-width: 480px) {
   /* For a screen < 540px, this CSS will be read */
@@ -297,5 +274,29 @@ input:checked + .slider:before {
 
   .name-collection{
     margin: 10px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* For a screen < 720px, this CSS will be read */
+  .countries {
+    font-size: 1rem;
+  }
+  .countries li img{
+    height: 23px;
+    width: auto;
+    max-width: 38px;
+  }
+}
+
+@media (max-width: 6000px) {
+  /* For a screen < 960px, this CSS will be read */
+  .countries {
+    font-size: 1rem;
+  }
+  .countries li img{
+    height: 30px;
+    width: auto;
+    max-width: 45px;
   }
 }
