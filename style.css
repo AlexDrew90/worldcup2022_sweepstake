@@ -1,7 +1,7 @@
 @media (max-width: 6000px) {
   /* For a screen < 960px, this CSS will be read */
   .countries {
-    font-size: 1em;
+    font-size: 1rem;
   }
   .countries li img{
     height: 30px;
@@ -13,7 +13,7 @@
 @media (max-width: 768px) {
   /* For a screen < 720px, this CSS will be read */
   .countries {
-    font-size: 0.75em;
+    font-size: 1rem;
   }
   .countries li img{
     height: 23px;
@@ -25,6 +25,14 @@
 @media (max-width: 480px) {
   /* For a screen < 540px, this CSS will be read */
 
+  body {
+    font-size: 1.2rem !important;
+  }
+
+  .header{
+    margin: 20px 10px 20px 10px !important;
+  }
+
   .countries li img{
     height: 15px;
     width: auto;
@@ -33,6 +41,35 @@
   }
   .countries li p{
     display: none;
+  }
+
+  .name-form{
+    flex-direction: column;
+  }
+
+  .name-form a{
+    margin-left: 0px;
+    margin-top: 5px;
+  }
+
+  .primary-cta{
+    margin: 10px 10px 30px 10px !important;
+  }
+
+  .intro{
+    margin: 10px !important;
+  }
+
+  .toggle{
+    margin: 20px 10px 10px 10px !important;
+  }
+
+  .toggle label{
+    text-align: center;
+  }
+
+  .name-collection{
+    margin: 10px !important;
   }
 }
 
@@ -43,14 +80,14 @@ body {
 }
 
 .header{
-  font-size: 2em;
+  font-size: 2rem;
   text-align: center;
   margin: 30px;
 }
 
-.Intro{
+.intro{
   text-align: center;
-  margin: 10px;
+  margin: 10px 60px 10px 60px;
 }
 
 .toggle{
@@ -58,6 +95,10 @@ body {
   justify-content: center;
   align-items: center;
   margin: 25px;
+  flex-wrap: wrap;
+}
+.toggle label{
+  margin: 10px 35px 10px 35px;
 }
 
 .name-collection{
@@ -107,7 +148,7 @@ body {
 
 .primary-cta{
   padding: 10px 30px;
-  margin: 40px;
+  margin: 0px 30px 50px 30px;
   background-color: rgb(38, 203, 29);
   color: rgb(250, 242, 242);
   border: 2px solid rgb(38, 203, 29);
@@ -127,6 +168,7 @@ body {
 .add-names{
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .list-inline-item{
@@ -135,6 +177,7 @@ padding: 5px;
 color: rgb(250, 242, 242);
 background-color: rgb(42, 126, 126);
 font-weight: bold;
+margin-bottom: 5px;
 }
 
 .list-inline-item p{
@@ -174,11 +217,12 @@ font-weight: bold;
 
 .new-look{
 border: solid black 1px;
-padding: 10px;
+padding: 5px;
 color: rgb(12, 12, 12);
 background-color: rgb(250, 242, 242);
 font-weight: bold;
 list-style: none;
+margin-bottom: 5px;
 }
 
 .name-header{
