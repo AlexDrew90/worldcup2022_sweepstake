@@ -25,8 +25,12 @@
 @media (max-width: 480px) {
   /* For a screen < 540px, this CSS will be read */
 
-  .countries {
-    font-size: 1rem;
+  body {
+    font-size: 1.2rem !important;
+  }
+
+  .header{
+    margin: 20px 10px 20px 10px !important;
   }
 
   .countries li img{
@@ -37,6 +41,35 @@
   }
   .countries li p{
     display: none;
+  }
+
+  .name-form{
+    flex-direction: column;
+  }
+
+  .name-form a{
+    margin-left: 0px;
+    margin-top: 5px;
+  }
+
+  .primary-cta{
+    margin: 10px 10px 30px 10px !important;
+  }
+
+  .intro{
+    margin: 10px !important;
+  }
+
+  .toggle{
+    margin: 20px 10px 10px 10px !important;
+  }
+
+  .toggle label{
+    text-align: center;
+  }
+
+  .name-collection{
+    margin: 10px !important;
   }
 }
 
@@ -52,9 +85,9 @@ body {
   margin: 30px;
 }
 
-.Intro{
+.intro{
   text-align: center;
-  margin: 10px;
+  margin: 10px 60px 10px 60px;
 }
 
 .toggle{
@@ -63,6 +96,9 @@ body {
   align-items: center;
   margin: 25px;
   flex-wrap: wrap;
+}
+.toggle label{
+  margin: 10px 35px 10px 35px;
 }
 
 .name-collection{
@@ -112,7 +148,7 @@ body {
 
 .primary-cta{
   padding: 10px 30px;
-  margin: 40px;
+  margin: 0px 30px 50px 30px;
   background-color: rgb(38, 203, 29);
   color: rgb(250, 242, 242);
   border: 2px solid rgb(38, 203, 29);

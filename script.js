@@ -103,6 +103,7 @@ const singleLoopThrough = () => {
       countRand = countArray[randCountIndex];
       count = countRand;
       countArray.splice(randCountIndex, 1);
+      // setTimeout(addCountries, 300);
       addCountries();
     }
   return count;
