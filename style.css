@@ -1,78 +1,3 @@
-@media (max-width: 6000px) {
-  /* For a screen < 960px, this CSS will be read */
-  .countries {
-    font-size: 1rem;
-  }
-  .countries li img{
-    height: 30px;
-    width: auto;
-    max-width: 45px;
-  }
-}
-
-@media (max-width: 768px) {
-  /* For a screen < 720px, this CSS will be read */
-  .countries {
-    font-size: 1rem;
-  }
-  .countries li img{
-    height: 23px;
-    width: auto;
-    max-width: 38px;
-  }
-}
-
-@media (max-width: 480px) {
-  /* For a screen < 540px, this CSS will be read */
-
-  body {
-    font-size: 1.2rem !important;
-  }
-
-  .header{
-    margin: 20px 10px 20px 10px !important;
-  }
-
-  .countries li img{
-    height: 15px;
-    width: auto;
-    max-width: 25px;
-    padding-bottom: 2px;
-  }
-  .countries li p{
-    display: none;
-  }
-
-  .name-form{
-    flex-direction: column;
-  }
-
-  .name-form a{
-    margin-left: 0px;
-    margin-top: 5px;
-  }
-
-  .primary-cta{
-    margin: 10px 10px 30px 10px !important;
-  }
-
-  .intro{
-    margin: 10px !important;
-  }
-
-  .toggle{
-    margin: 20px 10px 10px 10px !important;
-  }
-
-  .toggle label{
-    text-align: center;
-  }
-
-  .name-collection{
-    margin: 10px !important;
-  }
-}
-
 body {
   background-color: rgb(253, 234, 220);
   font-family: 'Inconsolata', monospace;
@@ -298,4 +223,79 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+@media (max-width: 6000px) {
+  /* For a screen < 960px, this CSS will be read */
+  .countries {
+    font-size: 1rem;
+  }
+  .countries li img{
+    height: 30px;
+    width: auto;
+    max-width: 45px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* For a screen < 720px, this CSS will be read */
+  .countries {
+    font-size: 1rem;
+  }
+  .countries li img{
+    height: 23px;
+    width: auto;
+    max-width: 38px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* For a screen < 540px, this CSS will be read */
+
+  body {
+    font-size: 1.2rem !important;
+  }
+
+  .header{
+    margin: 20px 10px 20px 10px !important;
+  }
+
+  .countries li img{
+    height: 15px;
+    width: auto;
+    max-width: 25px;
+    padding-bottom: 2px;
+  }
+  .countries li p{
+    display: none;
+  }
+
+  .name-form{
+    flex-direction: column;
+  }
+
+  .name-form a{
+    margin-left: 0px;
+    margin-top: 5px;
+  }
+
+  .primary-cta{
+    margin: 10px 10px 30px 10px !important;
+  }
+
+  .intro{
+    margin: 10px !important;
+  }
+
+  .toggle{
+    margin: 20px 10px 10px 10px !important;
+  }
+
+  .toggle label{
+    text-align: center;
+  }
+
+  .name-collection{
+    margin: 10px !important;
+  }
 }
